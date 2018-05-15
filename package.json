@@ -1,0 +1,11 @@
+{
+  "name": "fr-bonus",
+  "version": "1.0.0",
+  "description": "FR Bonus library",
+  "main": "index.js",
+  "author": "Wings Stiftung ",
+  "license": "MIT",
+  "dependencies": {
+    "bignumber.js": "^7.0.1"
+  }
+}
