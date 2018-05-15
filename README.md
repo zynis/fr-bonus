@@ -13,6 +13,8 @@ To get more details see [examples](#examples).
 ## Installation
 
 Requirements:
+
+  * Nodejs
   * Truffle
   * RPC Node (Testrpc/Parity/Get)
 
@@ -24,9 +26,9 @@ Installation with NPM:
 
 Launch:
 
-  USER_STORAGE=0  truffle test
+  USER_STORAGE=0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962  truffle test
 
-**Important**: Test Example.js woun't work without provided User storage contract address, use default User Storage address on mainnet: .
+**Important**: Test Example.js woun't work without provided User storage contract address, use default User Storage address on mainnet: 0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962.
  
 ## Migrations
 
