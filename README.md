@@ -36,7 +36,7 @@ USER_STORAGE=0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962  truffle test
  
 ## Migrations
 
-Standard truffle migrations, see details in [migrations folder](/migrations).
+Standard `truffle migrations`, see details in [migrations folder](/migrations).
 
 ## Examples
 
