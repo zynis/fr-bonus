@@ -4,9 +4,11 @@ This repository explains how to give bonus to ICO participaints based on partici
 
 ## Introduction
 
-Each forecaster on Wings platform has FR, that can be increasing/decrasing with time and forecasts accuracy, based on it, we can give additional bonus to people, who holds large FR, and do very quality forecasts. 
+Each forecaster on WINGS has a Forecast Rating (FR) which is a reputation score based on the ability to accurately forecast the sale of tokens or coins in a crowdfunding event, this score can be increasing or decreasing with time based decay and forecasts accuracy. Based on this FR we can give additional bonus to people, who hold have high FR scores. 
 
-This repo contains explanation how to do a bonus for such participants, include library that calculate bonus based on max FR (you can take max FR on [FR list portal](https://wings-utilities.com/)), participant FR and max bonus.
+The WINGS FR score hypothetically is a proxy for effort and analytical capability as it is rewarded for from high participation in evaluating ICOs and consistent ability to predict sales outcomes. Simply put it is a key performance metric for ranking personnel or algorithms (we do not assume that all WINGS forecasters are "people") in a decentralized sales forecasting organization.
+
+The repo contains explanations on how to give a bonus for such participants, including a library that calculates bonus based on max FR (you can find the current max FR on this community run [FR list portal](https://wings-utilities.com/)), participant FR and max bonus.
 
 To get more details see [examples](#examples).
 
@@ -32,7 +34,7 @@ Launch:
 USER_STORAGE=0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962  truffle test
 ```
 
-**Important**: Test Example.js woun't work without provided User storage contract address, use default User Storage address on mainnet: `0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962`.
+**Important**: Test Example.js won't work without providing User storage contract address, use default User Storage address on mainnet: `0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962`.
  
 ## Migrations
 
@@ -40,7 +42,7 @@ Standard `truffle migrations`, see details in [migrations folder](/migrations).
 
 ## Examples
 
-This path describing example, how you can integrate `FRBonus` lib to your ICO contract and make it possible to give bonus based on FR.
+Here we describe how to integrate `FRBonus` lib into a token sale or ICO contract, making it possible to give bonuses based on FR.
 
 First what you need to do is add FRBonus library to your smart contracts, let's do it with npm:
 
@@ -55,14 +57,14 @@ import "./IUserStorage.sol";
 import "./FRBonus.sol";
 ```
 
-So let's see on libraries and contracts:
+So in our libraries and contracts we now have:
 
  - `FRBonus`:
    - `getBonus(uint64 _maxFr, uint64 _usrFR, uint256 _maxBonus) public returns (uint256)` - Function that returns bonus, based on maximum FR (you can take it from FR list portal), user FR (take from IUserStorage), and max bonus you are ready to provide (in percents, e.g. 1%-100%). Returns bonus in percent.
  - `IUserStorage`:
    - `getFR(address _account) public constant returns(uint64 FR)` - Takes user account address and returns FR of this account.
 
-**Important**: `IUserStorage` interface should be initialize by `User Storage` address deployed on mainnet network, address is: `0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962`.
+**Important**: `IUserStorage` interface should be initialize by `User Storage` address deployed on Ethereum's mainnet network. The address is: `0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962`.
 
 Let's try to add it to our code so:
 
@@ -73,7 +75,7 @@ uint64 public maxFR = 771; // Maximum FR take from FR list portal - https://wing
 uint256 bonus = FRBonus.getBonus(maxFR, IUserStorage(userStorage).getFR(msg.sender), maxFRBonus); // take a bonus, will be some percent %.
 ```
 
-See how we take FR of participant:
+This is how we get the FR of a participant:
 
 ```sc
 IUserStorage(userStorage).getFR(msg.sender)
@@ -81,7 +83,7 @@ IUserStorage(userStorage).getFR(msg.sender)
 
 `userStorage` is address and should be: `0x94B2F026A75BE2556C78A6D1f573bD79Fdfb1962`.
 
-It's all, then you can use your bonus to increase allocation of tokens for participant.
+That's all. Now you can use your bonus to increase allocation of tokens for ICO participants based on how how much WINGS FR they have achieved.
 
 For more details look at our [example contracts](/contracts).
 
